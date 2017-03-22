@@ -2334,6 +2334,25 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "http://registry.npm.taobao.org/https-browserify/download/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+i-tofu@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/i-tofu/download/i-tofu-0.0.2.tgz#22acb71cbe9c2cb0df125637ce30a99b079d9f72"
+  dependencies:
+    async-validator "^1.6.6"
+    babel-runtime "^5.8.0"
+    copy-webpack-plugin "^4.0.1"
+    echarts "^3.3.1"
+    es6-promise "^4.0.5"
+    isomorphic-fetch "^2.2.1"
+    object-assign "^4.1.0"
+    object-equal "^1.0.0"
+    throttle-debounce "^1.0.1"
+    vue "^2.1.10"
+    vue-resource "^1.0.3"
+    vue-router "^2.2.0"
+    vuex "^2.1.1"
+    wind-dom "0.0.3"
+
 iconv-lite@~0.4.13:
   version "0.4.15"
   resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
