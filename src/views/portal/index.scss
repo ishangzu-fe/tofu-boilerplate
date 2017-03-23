@@ -35,7 +35,7 @@ html, body{
 
         color: transparent;
 
-        background-image: url('../../assets/icon/content.png');
+        background-image: url('./assets/icon/content.png');
         background-size: 16px 16px;
         background-repeat: no-repeat;
         background-position: left;
@@ -93,7 +93,7 @@ html, body{
       position: absolute;
       width: 38px;
       height: 38px;
-      background-image: url(../../assets/menu.png);
+      background-image: url(./assets/menu.png);
       background-size: 100%;
       right: 5px;
       top:14px;
@@ -238,7 +238,7 @@ html, body{
       margin-right: 12px;
       width: 16px;
       height: 16px;
-      background-image: url('../../assets/icon/content.png');
+      background-image: url('./assets/icon/content.png');
       background-size: 100% 100%;
 
       &.child{

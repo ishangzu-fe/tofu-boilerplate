@@ -8,15 +8,15 @@
         </div>
         <ul class="panel-user-options">
             <!--<li class="change-password" @click="changePassword">-->
-                <!--<img src="../../../../../assets/change_pw.svg"></img>-->
+                <!--<img src="../../../assets/change_pw.svg"></img>-->
                 <!--修改密码-->
             <!--</li>-->
             <li class="logout" @click="logout">
-                <img src="../../../../../assets/logout.svg"></img>
+                <img src="../../../assets/logout.svg"></img>
                 退出登录
             </li>
             <li class="close-windows" @click="closeAllTabs">
-                <img src="../../../../../assets/close_windows.svg"></img>
+                <img src="../../../assets/close_windows.svg"></img>
                 关闭所有窗口
             </li>
         </ul>
@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import tabbar from '../../tabbar'
-import CommonServices from '../../../../../services/common'
+import { Tabbar } from 'i-tofu'
+import CommonServices from 'service/common'
 
 export default {
     data () {
@@ -61,7 +61,7 @@ export default {
          * 关闭所有窗口
          */
         closeAllTabs () {
-            tabbar.manager.closeAllTabs()
+            Tabbar.manager.closeAllTabs()
         },
 
         /**

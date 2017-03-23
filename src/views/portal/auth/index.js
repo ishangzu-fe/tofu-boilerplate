@@ -1,10 +1,8 @@
+import CommonServices from 'service/common.js';
 
-// import LoginSerivces from '../../services/login';
-import CommonServices from '../../services/common';
+import tpl from './index.html';
 
-import tpl from './auth.html';
-
-export default{
+export default {
     template:tpl,
 
     data(){

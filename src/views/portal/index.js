@@ -1,10 +1,10 @@
 import dropdownUser from './components/dropdown_user';
 
-import CommonServices from '../../services/common';
+import CommonServices from '../../service/common';
 import Promise from 'es6-promise';
 
-import tpl from './portal.html';
-import './portal.scss';
+import tpl from './index.html';
+import './index.scss';
 
 export default {
     template: tpl,

@@ -4,8 +4,6 @@ import router from './router';
 import Tofu from 'i-tofu';
 import App from './App';
 
-import './styles/index.scss';
-
 Vue.use(Tofu);
 Vue.use(VueRouter);
 

@@ -2334,9 +2334,9 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "http://registry.npm.taobao.org/https-browserify/download/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
-i-tofu@^0.0.2:
-  version "0.0.2"
-  resolved "http://registry.npm.taobao.org/i-tofu/download/i-tofu-0.0.2.tgz#22acb71cbe9c2cb0df125637ce30a99b079d9f72"
+i-tofu@^0.0.4:
+  version "0.0.4"
+  resolved "http://registry.npm.taobao.org/i-tofu/download/i-tofu-0.0.4.tgz#141905ee1efc9f9ce104fa6b390a937930fc25d2"
   dependencies:
     async-validator "^1.6.6"
     babel-runtime "^5.8.0"
@@ -2347,6 +2347,7 @@ i-tofu@^0.0.2:
     object-assign "^4.1.0"
     object-equal "^1.0.0"
     throttle-debounce "^1.0.1"
+    tofu-lib "^0.0.3"
     vue "^2.1.10"
     vue-resource "^1.0.3"
     vue-router "^2.2.0"
@@ -4522,6 +4523,12 @@ to-arraybuffer@^1.0.0:
 to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/to-fast-properties/download/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
+
+tofu-lib@^0.0.3:
+  version "0.0.3"
+  resolved "http://registry.npm.taobao.org/tofu-lib/download/tofu-lib-0.0.3.tgz#b17340810c2df97ddf000df2e098d094a0ec4d8f"
+  dependencies:
+    isomorphic-fetch "^2.2.1"
 
 toposort@^1.0.0:
   version "1.0.3"

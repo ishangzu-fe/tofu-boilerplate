@@ -1,30 +1,32 @@
-import Service from 'services';
+import { Http } from 'i-tofu';
+
+const http = new Http();
 
 export default {
-    getDict(){
-        if(!window['dict']){
-            return Service.$get('/app_web_cheap/CommDictController/getDictList');
+    getDict() {
+        if (!window['dict']) {
+            return http.$get('/app_web_cheap/CommDictController/getDictList');
         }
     },
-    getPermission (params) {
-        if(!window['permission']){
-            return Service.$get('/isz_base/CommController/power.action', params);
+    getPermission(params) {
+        if (!window['permission']) {
+            return http.$get('/isz_base/CommController/power.action', params);
         }
     },
-    authLogin (params) {
-        return Service.$post('/isz_base/LoginController/auth.action', params);
+    authLogin(params) {
+        return http.$post('/isz_base/LoginController/auth.action', params);
     },
-    oldAuth (params) {
-        return Service.$get('/sysauth', params)
+    oldAuth(params) {
+        return http.$get('/sysauth', params)
     },
-    getOldMenus () {
-        return Service.$get('/navigation?systemCode=AppService');
+    getOldMenus() {
+        return http.$get('/navigation?systemCode=AppService');
     },
-    logout () {
-        return Service.$get('/isz_base/LoginController/logout.action');
+    logout() {
+        return http.$get('/isz_base/LoginController/logout.action');
     },
-    getMenus (params) {
-        return Service.$get('/isz_base/CommController/treeMenu.action', {
+    getMenus(params) {
+        return http.$get('/isz_base/CommController/treeMenu.action', {
             res_category: 'APPCLIENT'
         });
     }

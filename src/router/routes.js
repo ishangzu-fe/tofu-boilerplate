@@ -14,7 +14,7 @@ const extractRoutes = (views) => {
         let children;
         
         let _children = views[key].children;
-        if (_children.length) {
+        if (_children && _children.length) {
             children = extractRoutes(_children);
         }
 
