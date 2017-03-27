@@ -1,4 +1,4 @@
-import { Http } from 'i-tofu';
+import { Http } from 'tofu-lib';
 
 const http = new Http();
 

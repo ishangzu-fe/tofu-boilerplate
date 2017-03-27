@@ -5,6 +5,7 @@ import Portal from 'portal';
 import Auth from 'portal/auth';
 
 const routes = [
+    { path: '/', redirect: `${config.root}/dashboard` },
     { path: '/auth/:token', component: Auth },
     { path: config.root, component: Portal, children: [] }
 ]
