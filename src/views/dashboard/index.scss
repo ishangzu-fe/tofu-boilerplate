@@ -1,0 +1,19 @@
+.home {
+    .slogan{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        text-align: center;
+    }
+
+    .text {
+        font-size: 30px;
+        margin-top: 20px;
+    }
+    img {
+        width: 100px;
+        height: 100px;
+    }
+}

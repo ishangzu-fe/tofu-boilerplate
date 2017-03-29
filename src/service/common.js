@@ -1,32 +1,33 @@
-import { Http } from 'tofu-lib';
-
-const http = new Http();
+import Http from './http';
 
 export default {
+    test () {
+        return Http.$get('baidu.com', {}, 1);
+    },
     getDict() {
         if (!window['dict']) {
-            return http.$get('/app_web_cheap/CommDictController/getDictList');
+            return Http.$get('/app_web_cheap/CommDictController/getDictList');
         }
     },
     getPermission(params) {
         if (!window['permission']) {
-            return http.$get('/isz_base/CommController/power.action', params);
+            return Http.$get('/isz_base/CommController/power.action', params);
         }
     },
     authLogin(params) {
-        return http.$post('/isz_base/LoginController/auth.action', params);
+        return Http.$post('/isz_base/LoginController/auth.action', params);
     },
     oldAuth(params) {
-        return http.$get('/sysauth', params)
+        return Http.$get('/sysauth', params)
     },
     getOldMenus() {
-        return http.$get('/navigation?systemCode=AppService');
+        return Http.$get('/navigation?systemCode=AppService');
     },
     logout() {
-        return http.$get('/isz_base/LoginController/logout.action');
+        return Http.$get('/isz_base/LoginController/logout.action');
     },
     getMenus(params) {
-        return http.$get('/isz_base/CommController/treeMenu.action', {
+        return Http.$get('/isz_base/CommController/treeMenu.action', {
             res_category: 'APPCLIENT'
         });
     }

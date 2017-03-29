@@ -1,6 +1,7 @@
-import tpl from './index.html';
-import './index.scss';
+import './index.scss'
+import t from './index.html'
 
 export default {
-    name: 'dashboard'
+    name: 'dashboard',
+    template: t
 }
