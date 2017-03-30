@@ -12,5 +12,6 @@ module.exports = {
         // }
     },
     zipPath: '/Users/wchen/Desktop/',
-    root: '/app_service'
+    root: '/app_service',
+    title: '%logo%'
 }

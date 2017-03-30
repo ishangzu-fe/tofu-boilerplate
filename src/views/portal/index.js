@@ -6,6 +6,8 @@ import Promise from 'es6-promise';
 import tpl from './index.html';
 import './index.scss';
 
+import Config from 'config';
+
 export default {
     template: tpl,
 
@@ -17,6 +19,8 @@ export default {
 
     data() {
         return {
+            title: Config.title,
+            currentCity: '杭州',
             loading: true,
             menuConfig: {
                 useRouter: true,
@@ -55,9 +59,7 @@ export default {
                     name: '上海',
                     value: 'shanghai'
                 }
-            ],
-            currentCity: '杭州',
-            title: 'APP-CMS'
+            ]
         }
     },
 
