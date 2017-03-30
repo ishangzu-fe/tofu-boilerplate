@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import { Tabbar } from 'i-tofu'
-import CommonServices from 'service/common'
+import { Tabbar } from 'i-tofu';
+import CommonServices from 'service/common';
 
 export default {
     data () {
@@ -35,7 +35,7 @@ export default {
                 name: '',
                 phone: 13978894856767
             }
-        }
+        };
     },
 
     methods: {
@@ -54,14 +54,14 @@ export default {
                 } else {
                     this.$message.error('退出失败！');
                 }
-            })
+            });
         },
 
         /**
          * 关闭所有窗口
          */
         closeAllTabs () {
-            Tabbar.manager.closeAllTabs()
+            Tabbar.manager.closeAllTabs();
         },
 
         /**
@@ -77,15 +77,15 @@ export default {
                 this.profile.name = userInfo.user_name;
                 this.profile.phone = userInfo.user_phone;
             } else {
-                this.$message.error('获取用户信息失败！')
+                this.$message.error('获取用户信息失败！');
             }
         }
     },
 
     created () {
-        this.getUserInfo()
+        this.getUserInfo();
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>

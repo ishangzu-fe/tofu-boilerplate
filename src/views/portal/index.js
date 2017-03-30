@@ -1,12 +1,12 @@
-import dropdownUser from './components/dropdown_user';
-
-import CommonServices from '../../service/common';
-import Promise from 'es6-promise';
-
 import tpl from './index.html';
 import './index.scss';
 
 import Config from 'config';
+
+import dropdownUser from './components/dropdown_user';
+import CommonServices from 'service/common';
+
+import { TabManager } from 'i-tofu';
 
 export default {
     template: tpl,
@@ -14,7 +14,7 @@ export default {
     name: 'portal',
 
     components: {
-        'sys-dropdown-user': dropdownUser
+        'i-dropdown-user': dropdownUser
     },
 
     data() {
@@ -24,7 +24,14 @@ export default {
             loading: true,
             menuConfig: {
                 useRouter: true,
-                menus: []
+                menus: [
+                    { label: '示例', children: [
+                        { label: '示例一', path: Config.root + '/example_1' },
+                        { label: '示例二', path: Config.root + '/example_2', children: [
+                            { label: '示例三', path: Config.root + '/example_3' }
+                        ] }
+                    ] }
+                ]
             },
             tabConfig: {
                 useRouter: true,
@@ -43,7 +50,8 @@ export default {
                     phone: 13978894856767
                 }
             },
-            cityData: [{
+            cityData: [
+                {
                     name: '杭州',
                     value: 'hangzhou'
                 },
@@ -60,7 +68,7 @@ export default {
                     value: 'shanghai'
                 }
             ]
-        }
+        };
     },
 
     methods: {
@@ -75,11 +83,11 @@ export default {
          * 触发激活菜单的事件时，打开一个Tab
          */
         openTab(menu) {
-            let tab = {}
-            tab.path = menu.path
-            tab.label = menu.label
+            let tab = {};
+            tab.path = menu.path;
+            tab.label = menu.label;
 
-            sysTabMenu.manager.openTab(tab)
+            TabManager.openTab(tab);
         },
 
         /**
@@ -87,15 +95,14 @@ export default {
          */
         switchUserDropdown(status) {
             if (status === 'open') {
-                this.userDropdownConfig.dpConfig.trigger = true
+                this.userDropdownConfig.dpConfig.trigger = true;
             } else {
-                this.userDropdownConfig.dpConfig.trigger = false
+                this.userDropdownConfig.dpConfig.trigger = false;
             }
         },
 
         extractMenu(menu) {
             this.menuConfig.menus.unshift(this.traverseMenu(menu, menu[0].attributes)[0]);
-            console.log(this.menuConfig.menus)
         },
 
         traverseMenu(arr, prefix) {
@@ -103,50 +110,29 @@ export default {
                 let obj = {
                     id: v.id,
                     label: v.text
-                }
+                };
 
                 if (v.children) {
                     obj.children = this.traverseMenu(v.children, prefix);
                 } else {
-                    // obj.path = v.attributes.replace(prefix, '/');
                     obj.path = v.attributes;
                 }
 
-                return obj
-            })
+                return obj;
+            });
         }
-    },
-
-    beforeRouteEnter(to, from, next) {
-        Promise.all([CommonServices.getDict(), CommonServices.getPermission({
-            res_category: 'APPCLIENT'
-        })]).then(res => {
-            if (res[0].code === 0) {
-                window.dict = res[0].obj;
-                console.log(window.dict)
-            }
-
-            if (res[1].code === 0) {
-                window.permission = res[1].obj;
-                console.log(window.permission)
-            }
-            next(vm => {
-                vm.loading = false;
-            })
-        })
     },
 
     beforeCreate() {
         // 获取菜单并进行转换
         CommonServices.getMenus().then(res => {
             if (res.code === 0) {
-                console.log(res.obj)
                 this.extractMenu(res.obj);
             } else if (res.code === -9999) {
-                this.$message.error(res.msg)
+                this.$message.error(res.msg);
             } else {
-                this.$message.error('获取菜单失败！')
+                this.$message.error('获取菜单失败！');
             }
-        })
+        });
     }
-}
+};

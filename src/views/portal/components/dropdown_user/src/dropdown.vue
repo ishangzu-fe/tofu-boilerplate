@@ -12,14 +12,14 @@ export default {
         config: {
             require: true,
             validator () {
-                return true
+                return true;
                 // {
                 //      trigger
                 // }
             }
         }
     }
-}
+};
 </script>
 
 <style lang="scss">

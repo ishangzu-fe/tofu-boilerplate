@@ -1,6 +1,9 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
+    mock: true,
+    title: '%logo%',
+    root: '/system',
     devPort: 8080,
     devProxy: {
         // '/app_web_cheap': {
@@ -11,7 +14,5 @@ module.exports = {
         //     }
         // }
     },
-    zipPath: '/Users/wchen/Desktop/',
-    root: '/app_service',
-    title: '%logo%'
-}
+    zipPath: '/Users/wchen/Desktop/'
+};

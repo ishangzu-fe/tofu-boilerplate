@@ -3,41 +3,41 @@ import CommonServices from 'service/common.js';
 import tpl from './index.html';
 
 export default {
-    template:tpl,
+    template: tpl,
 
-    data(){
+    data() {
         return {
-            loading:true
-        }
+            loading: true
+        };
     },
 
-    mounted(){
+    mounted() {
         var params = {
             res_category: 'APPCLIENT',
             token: this.$route.params.token || ''
-        }
+        };
         var token = sessionStorage.getItem('token');
         if (token) {
-            if (token != params.token) {
+            if (token !== params.token) {
                 sessionStorage.clear();
             }
         }
-        sessionStorage.setItem('token',token);
+        sessionStorage.setItem('token', token);
 
         CommonServices.authLogin(params).then(res => {
-            let self = this
+            let self = this;
 
-            if(res.code === 0){
+            if (res.code === 0) {
                 this.$message({
-                    type:'success',
-                    message:'登录成功'
+                    type: 'success',
+                    message: '登录成功'
                 });
                 sessionStorage.setItem('userInfo', JSON.stringify(res.obj));
 
-                this.$router.push('/app_service/dashboard')
-            }else{
+                this.$router.push('/app_service/dashboard');
+            } else {
                 this.$message.error('登录失败！');
             }
         });
     }
-}
+};

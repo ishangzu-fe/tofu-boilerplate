@@ -5,15 +5,15 @@
 </template>
 
 <script>
-import Dropdown from './dropdown'
-import PanelUser from './panel_user'
+import Dropdown from './dropdown';
+import PanelUser from './panel_user';
 
 export default {
     props: {
         config: {
             require: true,
             validator () {
-                return true
+                return true;
                 // {
                 //      dpConfig: {
                 //          trigger
@@ -33,7 +33,7 @@ export default {
         'vvc-dropdown': Dropdown,
         'panel-user': PanelUser
     }
-}
+};
 </script>
 
 <style lang="scss">
