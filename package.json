@@ -11,7 +11,7 @@
         "object-assign": "^4.1.0",
         "object-equal": "^1.0.0",
         "throttle-debounce": "^1.0.1",
-        "tofu-lib": "0.0.8",
+        "tofu-lib": "0.0.9",
         "vue": "^2.2.0",
         "vue-echarts": "^2.3.3",
         "vue-moment": "^2.0.2",
