@@ -9,21 +9,23 @@ const main = {
     'example_1': Example_1,
     'example_2': Example_2,
     'example_3': Example_3
-    // 'a': {
-    //     self: a,
-    //     authKey: 'a',
-    //     children: {
+    // 'dashboard': {
+    //     self: Dashboard,
+    //     children: {},
+    //     meta: {
+    //         a: 1
     //     }
     // }
 };
 
 const primary = {
-    '/dashboard': {
-        self: Dashboard,
-        meta: {
-            a: 1
-        }
-    }
+    // '/dashboard': {
+    //     self: Dashboard,
+    //     children: {},
+    //     meta: {
+    //         a: 1
+    //     }
+    // }
 };
 
 export { main, primary };
