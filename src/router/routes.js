@@ -1,10 +1,10 @@
 import config from 'config';
-import views from 'views';
+import { main, primary } from 'views';
 
 import Portal from 'portal';
 import Auth from 'portal/auth';
 
-const routes = [
+let routes = [
     { path: '/', redirect: `${config.root}/dashboard` },
     { path: '/auth/:token', component: Auth },
     { path: config.root, component: Portal, children: [] }
@@ -15,7 +15,7 @@ const extractRoutes = (views) => {
         let children;
         let route = views[key];
 
-        if (route.self) {
+        if (!route.self) {
             return { path: key, component: route };
         } else {
             let _children = route.children;
@@ -26,23 +26,22 @@ const extractRoutes = (views) => {
             return {
                 children,
                 path: key,
-                component: route,
-                meta: {
-                    requiresAuth: route.authKey ? (config.mock ? false : true) : false,
-                    authKey: route.authKey
-                }
+                component: route.self,
+                meta: route.meta
             };
         }
         
     });
 };
 
-const children = extractRoutes(views);
+const children = extractRoutes(main);
+const parent = extractRoutes(primary);
 
 routes.forEach(v => {
     if (v.path === config.root) {
         v.children = children;
     }
 });
+routes = routes.concat(parent);
 
 export default routes;

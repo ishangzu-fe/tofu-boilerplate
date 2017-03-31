@@ -14,5 +14,5 @@ module.exports = {
         //     }
         // }
     },
-    zipPath: '/Users/wchen/Desktop/'
+    zipPath: ''
 };

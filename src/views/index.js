@@ -3,7 +3,7 @@ import Example_1 from './example/example_1';
 import Example_2 from './example/example_2';
 import Example_3 from './example/example_3';
 
-export default {
+const main = {
     // 配置路由及其权限
     'dashboard': Dashboard,
     'example_1': Example_1,
@@ -16,3 +16,14 @@ export default {
     //     }
     // }
 };
+
+const primary = {
+    '/dashboard': {
+        self: Dashboard,
+        meta: {
+            a: 1
+        }
+    }
+};
+
+export { main, primary };
