@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
     mock: true,
     title: '%logo%',
-    root: '/system',
     devPort: 8080,
     devProxy: {
         // '/app_web_cheap': {
@@ -13,6 +12,5 @@ module.exports = {
         //         return path.replace('/app_web_cheap', '');
         //     }
         // }
-    },
-    zipPath: ''
+    }
 };

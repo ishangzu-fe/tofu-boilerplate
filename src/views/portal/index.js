@@ -26,9 +26,9 @@ export default {
                 useRouter: true,
                 menus: [
                     { label: '示例', children: [
-                        { label: '示例一', path: Config.root + '/example_1' },
-                        { label: '示例二', path: Config.root + '/example_2', children: [
-                            { label: '示例三', path: Config.root + '/example_3' }
+                        { label: '示例一', path: '/system/example_1' },
+                        { label: '示例二', path: '/system/example_2', children: [
+                            { label: '示例三', path: '/system/example_3' }
                         ] }
                     ] }
                 ]
