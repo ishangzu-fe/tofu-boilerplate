@@ -31,7 +31,7 @@ export default {
     data () {
         return {
             profile: {
-                avatar: '/static/avatar.png',
+                avatar: '/static/avatar_egg.gif',
                 name: '',
                 phone: 13978894856767
             }
