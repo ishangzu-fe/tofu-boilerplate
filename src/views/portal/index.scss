@@ -27,16 +27,16 @@ body {
         z-index: 2;
         width: 200px;
         height: 100%;
-        .menu-icon {
-            display: inline-block;
-            width: 100%;
-            height: 50px;
-            color: transparent;
-            background-image: url('./assets/icon/content.png');
-            background-size: 16px 16px;
-            background-repeat: no-repeat;
-            background-position: left;
-        }
+        // .menu-icon {
+        //     display: inline-block;
+        //     width: 100%;
+        //     height: 50px;
+        //     color: transparent;
+        //     background-image: url('./assets/icon/content.png');
+        //     background-size: 16px 16px;
+        //     background-repeat: no-repeat;
+        //     background-position: left;
+        // }
         &>.menu-bar {
             position: relative;
             top: 70px;
@@ -65,7 +65,7 @@ body {
         width: 200px;
         height: 51px;
         line-height: 50px;
-        padding-left: 60px;
+        padding-left: 66px;
 
         position: absolute;
 
@@ -81,7 +81,7 @@ body {
             height: 28px;
 
             position: absolute;
-            left: 20px;
+            left: 24px;
             top: 12px;
         }
         & span {
@@ -174,19 +174,19 @@ body {
     }
 }
 
-.menu-bar .menu-item .menu-item-main {
-    color: #fff;
-}
+// .menu-bar .menu-item .menu-item-main {
+//     color: #fff;
+// }
 
-.menu-bar .menu-item .menu-item-child .menu-item-main {
-    color: #A3ACBA;
-    background: transparent;
-}
-.menu-bar .menu-item .menu-item-child .menu-item-main:hover, 
-.menu-bar .menu-item .menu-item-child .menu-item-main.menu-item-active {
-    color: #fff;
-    background-color: rgba(255, 255, 255, .1);
-}
+// .menu-bar .menu-item .menu-item-child .menu-item-main {
+//     color: #A3ACBA;
+//     background: transparent;
+// }
+// .menu-bar .menu-item .menu-item-child .menu-item-main:hover, 
+// .menu-bar .menu-item .menu-item-child .menu-item-main.menu-item-active {
+//     color: #fff;
+//     background-color: rgba(255, 255, 255, .1);
+// }
 
 .sys-menu {
     position: absolute;

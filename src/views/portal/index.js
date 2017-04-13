@@ -25,7 +25,7 @@ export default {
             menuConfig: {
                 useRouter: true,
                 menus: [
-                    { label: '示例', children: [
+                    { label: '示例', imgSrc: '/static/content.png', children: [
                         { label: '示例一', path: '/system/example_1' },
                         { label: '示例二', path: '/system/example_2'},
                         { label: '示例三', path: '/system/example_3' }
