@@ -15,26 +15,45 @@
             </div>
             <div class="tool-bar">
                 <div class="tool-bar-item">
-                    <i-dropdown @command="changeCity" class="tool-bar-item">
+                    <!--<i-dropdown @command="changeCity" class="tool-bar-item">
                         <span class="el-dropdown-link">
                           {{currentCity}}<i class="el-icon-triangle-down" ></i>
                         </span>
-                        <i-dropdown-menu slot="dropdown">
+                        <i-dropdown-menu>
                             <i-dropdown-item v-for="item in cityData" :command="item.name">{{item.name}}</i-dropdown-item>
                         </i-dropdown-menu>
-                    </i-dropdown>
+                    </i-dropdown>-->
+                </div>
+                <div class="tool-bar-city">
+                    <o-dropdown :label="currentCity">
+                        <ul class="city-list">
+                            <li 
+                                class="city-list-item" 
+                                v-for="item in cityData"
+                                :key="item.value"
+                                @click="currentCity = item.name">
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </o-dropdown>
                 </div>
                 <div class="tool-bar-item set">
-                    <a class="el-icon-set"></a>
+                    <o-button label="">
+                        <o-icon :size="14" iconClass="el-icon-set" />
+                    </o-button>
                 </div>
                 <div class="tool-bar-item notice">
-                    <a class="el-icon-notice"></a>
+                    <o-button label="">
+                        <o-icon :size="14" iconClass="el-icon-notice" />
+                    </o-button>
                 </div>
                 <div class="tool-bar-item user-info"
                      @mouseenter="switchUserDropdown('open')"
                      @mouseleave="switchUserDropdown('close')">
                     <img src="/static/avatar.png" alt="">
-                    <i class="el-icon-triangle-down" ></i>
+                    <div class="icon-container">
+                        <o-icon :size="9" iconClass="tofu-icon icon-arrow-down" />
+                    </div>
                     <i-dropdown-user :config="userDropdownConfig"/>
                 </div>
             </div>
