@@ -15,6 +15,12 @@ import './main.scss';
 
 // Vuex 的注册在store/index.js文件中
 Vue.use(Tofu);
+Vue.use(Tofu.Tabbar, {
+    defaultTab: {
+        label: '首页',
+        path: '/system/dashboard'
+    }
+});
 Vue.use(Moment);
 Vue.use(VueRouter);
 

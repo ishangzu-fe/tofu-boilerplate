@@ -1,9 +1,8 @@
 <div class="portal">
     <div class="side-bar">
         <div class="logo">
-            <img src="/static/logo-isz-square.png" alt="">
+            <img src="/static/logo.svg" alt="">
             <span>{{title}}</span>
-            <span class="btn-menu"></span>
         </div>
         <div class="menu-bar">
             <i-menubar :config="menuConfig" @activate="openTab"></i-menubar>
@@ -11,7 +10,9 @@
     </div>
     <div class="view-right">
         <div class="header">
-            <i-tabbar :config="tabConfig"> </i-tabbar>
+            <div class="tabbar-container">
+                <v-tabbar />
+            </div>
             <div class="tool-bar">
                 <div class="tool-bar-item">
                     <i-dropdown @command="changeCity" class="tool-bar-item">
@@ -38,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <keep-alive>
+        <keep-alive :include="$tab.cache">
             <router-view class="view-main"></router-view>
         </keep-alive>
     </div>

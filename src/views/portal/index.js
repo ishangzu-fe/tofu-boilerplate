@@ -27,9 +27,8 @@ export default {
                 menus: [
                     { label: '示例', children: [
                         { label: '示例一', path: '/system/example_1' },
-                        { label: '示例二', path: '/system/example_2', children: [
-                            { label: '示例三', path: '/system/example_3' }
-                        ] }
+                        { label: '示例二', path: '/system/example_2'},
+                        { label: '示例三', path: '/system/example_3' }
                     ] }
                 ]
             },
@@ -87,7 +86,7 @@ export default {
             tab.path = menu.path;
             tab.label = menu.label;
 
-            TabManager.openTab(tab);
+            this.$tab.createTab(tab);
         },
 
         /**
