@@ -1,4 +1,4 @@
-import { Http } from 'tofu-lib';
+import { Http } from 'tofu-http';
 import config from 'config';
 
 const http = new Http(config.mock, data => {
