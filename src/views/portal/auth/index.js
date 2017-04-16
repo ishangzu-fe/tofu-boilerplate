@@ -34,7 +34,7 @@ export default {
                 });
                 sessionStorage.setItem('userInfo', JSON.stringify(res.obj));
 
-                this.$router.push('/app_service/dashboard');
+                this.$router.push('/system/dashboard');
             } else {
                 this.$message.error('登录失败！');
             }

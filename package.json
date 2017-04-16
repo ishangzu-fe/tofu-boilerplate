@@ -7,11 +7,11 @@
     "dependencies": {
         "async-validator": "^1.6.6",
         "es6-promise": "^4.0.5",
-        "i-tofu": "0.2.5",
+        "i-tofu": "0.2.3",
         "object-assign": "^4.1.0",
         "object-equal": "^1.0.0",
         "throttle-debounce": "^1.0.1",
-        "tofu-lib": "0.1.0",
+        "tofu-http": "^0.1.0",
         "vue": "^2.2.0",
         "vue-echarts": "^2.3.3",
         "vue-moment": "^2.0.2",
