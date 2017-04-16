@@ -127,6 +127,10 @@ body {
 
             color: #fff;
 
+            background: #273142;
+
+            user-select: none;
+
             .tool-bar-city {
                 display: inline-block;
 
@@ -209,116 +213,6 @@ body {
                 display: inline-block;
                 width: 12px;
                 height: 100%;
-            }
-        }
-    }
-}
-
-// .menu-bar .menu-item .menu-item-main {
-//     color: #fff;
-// }
-
-// .menu-bar .menu-item .menu-item-child .menu-item-main {
-//     color: #A3ACBA;
-//     background: transparent;
-// }
-// .menu-bar .menu-item .menu-item-child .menu-item-main:hover, 
-// .menu-bar .menu-item .menu-item-child .menu-item-main.menu-item-active {
-//     color: #fff;
-//     background-color: rgba(255, 255, 255, .1);
-// }
-
-.sys-menu {
-    position: absolute;
-    left: 0;
-    top: 70px;
-    width: calc(100% - 1px);
-    background: #fff;
-    height: 100%;
-}
-
-.sys-menu-item {
-    .sys-menu-child {
-        .sys-menu-item-content {
-            font-size: 12px;
-        }
-    }
-    .sys-menu-item-content {
-        width: 100%;
-        height: 50px;
-        line-height: 50px;
-        cursor: pointer;
-        color: #000;
-        font-size: 14px;
-        transition: all .3s ease-in-out;
-        text-align: left;
-        padding: 0 20px;
-        box-sizing: border-box;
-        position: relative;
-        .sys-menu-icon {
-            position: relative;
-            top: 3px;
-            left: 2px;
-            display: inline-block;
-            margin-right: 12px;
-            width: 16px;
-            height: 16px;
-            background-image: url('./assets/icon/content.png');
-            background-size: 100% 100%;
-            &.child {
-                visibility: hidden;
-            }
-        }
-        &:hover {
-            background-color: #fafafa;
-            .sys-menu-item-arrow:before {
-                border-top: 5px solid #fafafa;
-            }
-        }
-        &.active:after,
-        &.mouseover:after {
-            content: '';
-            width: 3px;
-            height: 30px;
-            background-color: rgb(39, 152, 251);
-            position: absolute;
-            top: 9px;
-            right: 0;
-            animation: fadeIn .3s ease-in-out both;
-        }
-        .sys-menu-item-arrow {
-            border-top: 5px solid #000;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            position: absolute;
-            right: 16px;
-            top: 22px;
-            transform: rotate(0deg);
-            transition: all .3s ease-in-out;
-            &:before {
-                content: '';
-                border-top: 5px solid #fff;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                position: absolute;
-                top: -6px;
-                left: -5px;
-                transition: all .3s ease-in-out;
-            }
-            &.active {
-                transform: rotate(180deg);
-            }
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                height: 0;
-                top: 24px;
-            }
-            100% {
-                opacity: 1;
-                height: 30px;
-                top: 9px;
             }
         }
     }
