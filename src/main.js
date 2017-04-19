@@ -5,6 +5,7 @@ import router from './router';
 import Moment from 'vue-moment';
 import Tofu from 'i-tofu';
 import App from './App';
+import './mock';
 import './main.scss';
 
 // 项目需要使用时，再引入

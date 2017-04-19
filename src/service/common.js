@@ -2,9 +2,6 @@ import Http from './http';
 
 // 服务模块中的方法，应执行纯粹的数据请求
 export default {
-    test () {
-        return Http.$get('baidu.com', {}, 1);
-    },
     getDict() {
         return Http.$get('/app_web_cheap/CommDictController/getDictList');
     },
