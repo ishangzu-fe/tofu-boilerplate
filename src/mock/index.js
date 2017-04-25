@@ -2,7 +2,7 @@ import Number from './number';
 import config from 'config';
 
 // 请在根目录下配置是否使用 mock 环境
-if (!conig.mock) {
+if (!config.mock) {
     fetchMock.restore();
 }
 
