@@ -3,7 +3,7 @@ import './index.scss';
 
 import Config from 'config';
 
-import dropdownUser from './components/dropdown_user';
+import dropdownUser from './components/dropdown_user/index.vue';
 import CommonServices from 'service/common';
 
 import { TabManager } from 'i-tofu';
@@ -40,14 +40,7 @@ export default {
                 }
             },
             userDropdownConfig: {
-                dpConfig: {
-                    trigger: false
-                },
-                panelConfig: {
-                    avatar: '/static/assets/avatar.50e4091.png',
-                    name: 'Gertrude Klein',
-                    phone: 13978894856767
-                }
+                trigger: false
             },
             cityData: [
                 {
@@ -94,9 +87,9 @@ export default {
          */
         switchUserDropdown(status) {
             if (status === 'open') {
-                this.userDropdownConfig.dpConfig.trigger = true;
+                this.userDropdownConfig.trigger = true;
             } else {
-                this.userDropdownConfig.dpConfig.trigger = false;
+                this.userDropdownConfig.trigger = false;
             }
         },
 
