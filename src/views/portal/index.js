@@ -20,6 +20,7 @@ export default {
     data() {
         return {
             title: Config.title,
+            cascaderActive: false,
             currentCity: '杭州',
             loading: true,
             menuConfig: {
@@ -59,18 +60,17 @@ export default {
                     name: '上海',
                     value: 'shanghai'
                 }
-            ]
+            ],
+            props: {
+                label: 'name',
+                value: 'code',
+                children: 'sysDepartList'
+            },
+            options: []
         };
     },
 
     methods: {
-        changeCity(name) {
-            if (this.currentCity === name) {
-                return;
-            }
-            this.currentCity = name;
-        },
-
         /**
          * 触发激活菜单的事件时，打开一个Tab
          */
@@ -112,7 +112,27 @@ export default {
 
                 return obj;
             });
-        }
+        },
+        /**
+         * 获取部门
+         */
+        getDeparts() {
+            CommonServices.getDeparts().then(res => {
+                if (res.code === 0) {
+                    const result = res.obj;
+                    this.options = {
+                        code: result.code,
+                        name: result.name,
+                        sysDepartList: {
+                            code: result.sysDepartList.dep_id,
+                            name: result.sysDepartList.dep_name
+                        }
+                    };
+                }else{
+                    this.$message.error(res.msg);
+                }
+            });
+        },
     },
 
     beforeCreate() {
@@ -125,6 +145,21 @@ export default {
             } else {
                 this.$message.error('获取菜单失败！');
             }
+        });
+    },
+    mounted() {
+        this.getDeparts();
+        this.$refs.cascader.$el.addEventListener('click', (e) => {
+            if (!this.cascaderActive) {
+                if (this.$refs.cascader.$el.children[0].children[2] === e.target) {
+                    this.cascaderActive = false;
+                    return;
+                }
+            }
+            this.cascaderActive = !this.cascaderActive;
+        }, true);
+        document.addEventListener('click', (e) => {
+            this.cascaderActive = false;
         });
     }
 };

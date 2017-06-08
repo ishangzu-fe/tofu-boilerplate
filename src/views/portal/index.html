@@ -14,34 +14,18 @@
                 <v-tabbar />
             </div>
             <div class="tool-bar">
-                <div class="tool-bar-item">
-                    <!--<i-dropdown @command="changeCity" class="tool-bar-item">
-                        <span class="el-dropdown-link">
-                          {{currentCity}}<i class="el-icon-triangle-down" ></i>
-                        </span>
-                        <i-dropdown-menu>
-                            <i-dropdown-item v-for="item in cityData" :command="item.name">{{item.name}}</i-dropdown-item>
-                        </i-dropdown-menu>
-                    </i-dropdown>-->
-                </div>
                 <div class="tool-bar-city">
-                    <o-dropdown :label="currentCity">
-                        <ul class="city-list">
-                            <li 
-                                class="city-list-item" 
-                                v-for="item in cityData"
-                                :key="item.value"
-                                @click="currentCity = item.name">
-                                {{item.name}}
-                            </li>
-                        </ul>
-                    </o-dropdown>
+                    <cascader
+                            ref="cascader"
+                            :options="options"
+                            :props="props"
+                            class="tool-bar-cascader"
+                            :class="{ 'active' : cascaderActive}"
+                            :is-basic="false"
+                            placeholder="选择城市与公司"
+                            clearable>
+                    </cascader>
                 </div>
-                <!--<div class="tool-bar-item set">-->
-                    <!--<o-button label="">-->
-                        <!--<o-icon :size="14" iconClass="el-icon-set" />-->
-                    <!--</o-button>-->
-                <!--</div>-->
                 <div class="tool-bar-item notice">
                     <o-button label="">
                         <o-icon :size="14" iconClass="el-icon-notice" />
