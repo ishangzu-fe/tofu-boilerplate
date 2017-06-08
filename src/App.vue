@@ -15,7 +15,6 @@ export default {
         Promise.all([CommonServices.getDict(), CommonServices.getPermission({
             res_category: 'APPCLIENT'
         })]).then(res => {
-            debugger;
             console.group('字典与权限');
             if (res[0].code === 0) {
                 window.dict = res[0].obj;
