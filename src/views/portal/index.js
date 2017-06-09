@@ -3,7 +3,7 @@ import './index.scss';
 
 import Config from 'config';
 
-import dropdownUser from './components/dropdown_user';
+import dropdownUser from './components/dropdown_user/index.vue';
 import CommonServices from 'service/common';
 
 import { TabManager } from 'i-tofu';
@@ -20,6 +20,7 @@ export default {
     data() {
         return {
             title: Config.title,
+            cascaderActive: false,
             currentCity: '杭州',
             loading: true,
             menuConfig: {
@@ -40,14 +41,7 @@ export default {
                 }
             },
             userDropdownConfig: {
-                dpConfig: {
-                    trigger: false
-                },
-                panelConfig: {
-                    avatar: '/static/assets/avatar.50e4091.png',
-                    name: 'Gertrude Klein',
-                    phone: 13978894856767
-                }
+                trigger: false
             },
             cityData: [
                 {
@@ -66,18 +60,17 @@ export default {
                     name: '上海',
                     value: 'shanghai'
                 }
-            ]
+            ],
+            props: {
+                label: 'name',
+                value: 'code',
+                children: 'sysDepartList'
+            },
+            options: []
         };
     },
 
     methods: {
-        changeCity(name) {
-            if (this.currentCity === name) {
-                return;
-            }
-            this.currentCity = name;
-        },
-
         /**
          * 触发激活菜单的事件时，打开一个Tab
          */
@@ -94,9 +87,9 @@ export default {
          */
         switchUserDropdown(status) {
             if (status === 'open') {
-                this.userDropdownConfig.dpConfig.trigger = true;
+                this.userDropdownConfig.trigger = true;
             } else {
-                this.userDropdownConfig.dpConfig.trigger = false;
+                this.userDropdownConfig.trigger = false;
             }
         },
 
@@ -119,7 +112,27 @@ export default {
 
                 return obj;
             });
-        }
+        },
+        /**
+         * 获取部门
+         */
+        getDeparts() {
+            CommonServices.getDeparts().then(res => {
+                if (res.code === 0) {
+                    const result = res.obj;
+                    this.options = {
+                        code: result.code,
+                        name: result.name,
+                        sysDepartList: {
+                            code: result.sysDepartList.dep_id,
+                            name: result.sysDepartList.dep_name
+                        }
+                    };
+                }else{
+                    this.$message.error(res.msg);
+                }
+            });
+        },
     },
 
     beforeCreate() {
@@ -132,6 +145,21 @@ export default {
             } else {
                 this.$message.error('获取菜单失败！');
             }
+        });
+    },
+    mounted() {
+        this.getDeparts();
+        this.$refs.cascader.$el.addEventListener('click', (e) => {
+            if (!this.cascaderActive) {
+                if (this.$refs.cascader.$el.children[0].children[2] === e.target) {
+                    this.cascaderActive = false;
+                    return;
+                }
+            }
+            this.cascaderActive = !this.cascaderActive;
+        }, true);
+        document.addEventListener('click', (e) => {
+            this.cascaderActive = false;
         });
     }
 };

@@ -21,5 +21,8 @@ export default {
         return Http.$get('/isz_base/CommController/treeMenu.action', {
             res_category: 'APPCLIENT'
         });
+    },
+    getDeparts() {
+        return Http.$get('/isz_base/CommController/selectCityDep.action');
     }
 };
