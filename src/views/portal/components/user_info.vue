@@ -4,21 +4,16 @@
             <div class="panel-user">
                 <div class="panel-user-profile">
                     <img class="avatar" :src="profile.avatar"></img>
-                    <!-- 需要过滤器 TODO -->
                     <p class="info-name">{{profile.name}}</p>
                     <p class="info-phone">{{profile.phone}}</p>
                 </div>
                 <ul class="panel-user-options">
-                    <!--<li class="change-password" @click="changePassword">-->
-                    <!--<img src="../../../assets/change_pw.svg"></img>-->
-                    <!--修改密码-->
-                    <!--</li>-->
                     <li class="logout" @click="logout">
-                        <img src="../../assets/logout.svg"></img>
+                        <img src="/static/logout.svg"></img>
                         退出登录
                     </li>
                     <li class="close-windows" @click="closeAllTabs">
-                        <img src="../../assets/close_windows.svg"></img>
+                        <img src="/static/close_windows.svg"></img>
                         关闭所有窗口
                     </li>
                 </ul>
@@ -29,6 +24,7 @@
 <script>
     import { Tabbar } from 'i-tofu';
     import CommonServices from 'service/common';
+
     export default {
         name: 'dropdown-user',
         props: {
@@ -46,7 +42,7 @@
                     name: '丫丫',
                     phone: '13978894856'
                 }
-            }
+            };
         },
         methods: {
             //退出登录
@@ -66,10 +62,6 @@
             },
             //获取用户信息
             getUserInfo () {
-                // const token = sessionStorage.getItem('token')
-                // if (!token) {
-                //     this.$message.error('你尚未登录！')
-                // }
                 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
                 if (userInfo) {
                     this.profile.name = userInfo.user_name;
@@ -82,7 +74,7 @@
         created() {
             this.getUserInfo();
         }
-    }
+    };
 </script>
 <style lang="scss">
     .vvc-dropdown {

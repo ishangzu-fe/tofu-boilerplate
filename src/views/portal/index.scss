@@ -49,6 +49,8 @@ body {
         height: calc(100% - 40px);
         background: #fff;
     }
+
+    // logo
     .logo {
         box-sizing: border-box;
         width: 200px;
@@ -72,22 +74,16 @@ body {
             font-size: 16px;
             color: #fff;
         }
-        & .btn-menu {
-            position: absolute;
-            width: 38px;
-            height: 38px;
-            background-image: url(./assets/menu.png);
-            background-size: 100%;
-            right: 5px;
-            top: 14px;
-        }
     }
+
+    // 头部
     .header {
         box-sizing: border-box;
         height: 50px;
         position: relative;
         color: #000;
         background: #273142;
+        z-index: 100;
 
         .tabbar-container {
             box-sizing: border-box;
@@ -193,7 +189,7 @@ body {
                     .cascader-menu-container,
                     .filterable-menu {
                         top:29px;
-                        height:132px;
+                        height: 150px;
                         border: 1px solid #CFDBE6;
                         box-shadow: 0 6px 15px 0 rgba(0,0,0,0.30);
                     }

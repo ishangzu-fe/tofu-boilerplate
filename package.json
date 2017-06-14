@@ -7,7 +7,7 @@
   "dependencies": {
     "async-validator": "^1.6.6",
     "es6-promise": "^4.0.5",
-    "i-tofu": "0.2.5",
+    "i-tofu": "0.3.7",
     "mockjs": "1.0.0",
     "object-assign": "^4.1.0",
     "object-equal": "^1.0.0",

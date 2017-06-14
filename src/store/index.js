@@ -4,8 +4,6 @@ import actions from './actions';
 import * as mutations from './mutations';
 import * as getters from './getters';
 
-import tabs from './modules/tabs';
-
 const listener = store => {
     if (!sessionStorage) {
         return;
@@ -21,9 +19,7 @@ export default new Vuex.Store({
     state:{
         dict:{}
     },
-    modules:{
-        tabs
-    },
+    modules:{},
     actions,
     mutations,
     getters,

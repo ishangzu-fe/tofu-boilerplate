@@ -15,16 +15,15 @@
             </div>
             <div class="tool-bar">
                 <div class="tool-bar-city">
-                    <cascader
+                    <i-cascader
                             ref="cascader"
                             :options="options"
-                            :props="props"
                             class="tool-bar-cascader"
-                            :class="{ 'active' : cascaderActive}"
+                            :class="{'active': cascaderActive}"
                             :is-basic="false"
                             placeholder="选择城市与公司"
                             clearable>
-                    </cascader>
+                    </i-cascader>
                 </div>
                 <div class="tool-bar-item notice">
                     <o-button label="">

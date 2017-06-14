@@ -1,12 +1,16 @@
 import config from 'config';
 
 import Portal from 'portal';
-import Auth from 'portal/auth';
+import Auth from 'views/login/auth';
 import Dashboard from 'views/dashboard';
 
 import Example_1 from 'views/example/example_1';
 import Example_2 from 'views/example/example_2';
 import Example_3 from 'views/example/example_3';
+
+const createCpt = (component, name) => {
+    return Object.assign({}, component, {name});
+};
 
 let routes = [
     { path: '/', redirect: '/system/dashboard' },

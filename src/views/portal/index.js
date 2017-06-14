@@ -1,12 +1,11 @@
 import tpl from './index.html';
 import './index.scss';
 
+import Promise from 'es6-promise';
 import Config from 'config';
 
-import dropdownUser from './components/dropdown_user/index.vue';
+import dropdownUser from './components/user_info';
 import CommonServices from 'service/common';
-
-import { TabManager } from 'i-tofu';
 
 export default {
     template: tpl,
@@ -21,7 +20,6 @@ export default {
         return {
             title: Config.title,
             cascaderActive: false,
-            currentCity: '杭州',
             loading: true,
             menuConfig: {
                 useRouter: true,
@@ -42,29 +40,6 @@ export default {
             },
             userDropdownConfig: {
                 trigger: false
-            },
-            cityData: [
-                {
-                    name: '杭州',
-                    value: 'hangzhou'
-                },
-                {
-                    name: '南京',
-                    value: 'nanjing'
-                },
-                {
-                    name: '苏州',
-                    value: 'suzhou'
-                },
-                {
-                    name: '上海',
-                    value: 'shanghai'
-                }
-            ],
-            props: {
-                label: 'name',
-                value: 'code',
-                children: 'sysDepartList'
             },
             options: []
         };
@@ -93,62 +68,96 @@ export default {
             }
         },
 
-        extractMenu(menu) {
-            this.menuConfig.menus.unshift(this.traverseMenu(menu, menu[0].attributes)[0]);
-        },
-
-        traverseMenu(arr, prefix) {
-            return arr.map(v => {
-                let obj = {
-                    id: v.id,
-                    label: v.text
-                };
-
-                if (v.children) {
-                    obj.children = this.traverseMenu(v.children, prefix);
+        /**
+         * 获取菜单
+         */
+        getMenus () {
+            CommonServices.getMenus({ res_category: 'APPCLIENT' }).then(res => {
+                if (res.code === 0) {
+                    this.menuConfig.menus = this.menuConfig.menus.concat(this.traverseMenu(res.obj));
+                } else if (res.code === -9999) {
+                    this.$message.error(res.msg);
                 } else {
-                    obj.path = v.attributes;
+                    this.$message.error('获取菜单失败！');
                 }
-
-                return obj;
             });
         },
+
+        traverseMenu(menus, prefix = '') {
+            return menus.map(menu => {
+                let rst = {
+                    id: menu.id,
+                    label: menu.text
+                };
+
+                if (menu.children) {
+                    rst.children = this.traverseMenu(menu.children, menu.attributes.match(/^(\/[a-zA-Z]+\_[a-zA-Z]+|\/.*\/).+$/)[1]);
+                } else {
+                    rst.path = menu.attributes.replace(prefix, '');
+                }
+
+                return rst;
+            });
+        },
+
         /**
          * 获取部门
          */
         getDeparts() {
             CommonServices.getDeparts().then(res => {
                 if (res.code === 0) {
-                    const result = res.obj;
-                    this.options = {
-                        code: result.code,
-                        name: result.name,
-                        sysDepartList: {
-                            code: result.sysDepartList.dep_id,
-                            name: result.sysDepartList.dep_name
-                        }
-                    };
-                }else{
+                    this.options = res.obj.map(city => {
+                        return {
+                            value: city.code,
+                            label: city.name,
+                            children: this.transformDepart(city.sysDepartList)
+                        };
+                    });
+                } else {
                     this.$message.error(res.msg);
                 }
             });
         },
+
+        transformDepart (departs) {
+            if (!departs) return;
+
+            return departs.map(depart => {
+                return {
+                    value: depart.code || depart.dep_id,
+                    label: depart.name || depart.dep_name,
+                    children: this.transformDepart(depart.sysDepartList)
+                };
+            });
+        }
     },
 
-    beforeCreate() {
-        // 获取菜单并进行转换
-        CommonServices.getMenus().then(res => {
-            if (res.code === 0) {
-                this.extractMenu(res.obj);
-            } else if (res.code === -9999) {
-                this.$message.error(res.msg);
-            } else {
-                this.$message.error('获取菜单失败！');
+    beforeCreate () {
+        Promise.all([CommonServices.getDict(), CommonServices.getPermission({
+            res_category: 'APPCLIENT'
+        })]).then(res => {
+            console.group('字典与权限');
+            if (res[0].code === 0) {
+                window.dict = res[0].obj;
+                console.log('字典：', window.dict);
             }
+
+            if (res[1].code === 0) {
+                window.permission = res[1].obj;
+                console.log('权限：', window.permission);
+            }
+            console.groupEnd();
         });
     },
-    mounted() {
+
+    created() {
+        // 获取菜单并进行转换
+        this.getMenus();
         this.getDeparts();
+    },
+
+    mounted() {
+        // 实现城市部门级联选择器点击或悬浮效果
         this.$refs.cascader.$el.addEventListener('click', (e) => {
             if (!this.cascaderActive) {
                 if (this.$refs.cascader.$el.children[0].children[2] === e.target) {

@@ -1,27 +1,28 @@
-import CommonServices from 'service/common.js';
+<template>
+    <div
+        class="login-auth"
+        v-loading.fullscreen.lock="loading"
+        i-loading-text="初始化中....">
+    </div>
+</template>
 
-import tpl from './index.html';
+<script>
+import CommonService from 'service/common.js';
 
 export default {
-    template: tpl,
+    name: 'auth',
 
-    data() {
+    data () {
         return {
             loading: true
         };
     },
 
-    mounted() {
+    mounted () {
         var params = {
             res_category: 'APPCLIENT',
             token: this.$route.params.token || ''
         };
-        var token = sessionStorage.getItem('token');
-        if (token) {
-            if (token !== params.token) {
-                sessionStorage.clear();
-            }
-        }
         sessionStorage.setItem('token', token);
 
         CommonServices.authLogin(params).then(res => {
@@ -41,3 +42,4 @@ export default {
         });
     }
 };
+</script>
