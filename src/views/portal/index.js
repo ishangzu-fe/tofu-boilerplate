@@ -90,10 +90,15 @@ export default {
                     label: menu.text
                 };
 
+                if (level === 0) rst.imgSrc = '/static/content.png';
                 if (menu.children) {
-                    rst.children = this.traverseMenu(menu.children, menu.attributes.match(/^(\/[a-zA-Z]+\_[a-zA-Z]+|\/.*\/).+$/)[1]);
+                    rst.children = this.traverseMenu(menu.children, menu.attributes.match(/^(\/[a-zA-Z]+\_[a-zA-Z]+|\/.*\/).+$/)[1], level + 1);
                 } else {
-                    rst.path = menu.attributes.replace(prefix, '');
+                    if (level !== 0) {
+                        rst.path = menu.attributes.replace(prefix, ''); // 部分替换成 ''
+                    } else {
+                        rst.path = '/system' + menu.attributes;
+                    }
                 }
 
                 return rst;
